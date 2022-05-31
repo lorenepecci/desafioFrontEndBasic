@@ -1,0 +1,24 @@
+{
+  "name": "desafiofrontendbasic",
+  "version": "1.0.0",
+  "description": "Criar uma página HTML utilizando de ponto de partida esse repositório.\r Depois, utilizando Javascript pegar os dados do JSON da requisição `(GET) - https://us-central1-squid-apis.cloudfunctions.net/test-front-basic`.\r Liste o feed do Instagram da @squidapp. Utilizar de CSS para personalizar o layout como o da imagem do resultado abaixo, considerar o hover para todas as imagens (ver primeira imagem do resultado).\r Além do hover, cada imagem deve ter um click para o Link da imagem no instagram, abrindo em uma nova aba ao clicar.\r Responsividade e experiência de usuário (como loaders, tratamento de erros, animações, efeitos, etc) serão levados em consideração na avaliação.\r No final, subir o código em um repositório público no seu próprio GitHub e mandar o link para o avaliador.\r É permitido o uso de qualquer framework javascript no teste!",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "jest --env=jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorenepecci/desafioFrontEndBasic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lorenepecci/desafioFrontEndBasic/issues"
+  },
+  "homepage": "https://github.com/lorenepecci/desafioFrontEndBasic#readme",
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
+  }
+}

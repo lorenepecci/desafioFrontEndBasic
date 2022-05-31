@@ -1,5 +1,5 @@
-const avisoCarregando = document.querySelector('.loading');
-
+// import { fetchAPI } from './fetchAPI';
+const avisoCarregando = document.querySelector( '.loading' );
 
 const fetchAPI = async () => {
   try {
@@ -66,4 +66,5 @@ async function addImages() {
 
 document.addEventListener( "DOMContentLoaded", function () {
   addImages();
-});
+} );
+

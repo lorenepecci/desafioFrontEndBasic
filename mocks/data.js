@@ -1,4 +1,4 @@
-const dataFirst = {
+const dataFirst = [ {
   "_id": "59fa36b02108567eb3594a75",
   "obtidoEm": "2018-01-11T19:06:13.751-02:00",
   "origem": "instagram",
@@ -65,6 +65,6 @@ const dataFirst = {
     }
   ],
   "lastUpdate": "2018-08-22T05:02:12.655-03:00"
-};
+} ];
 
 module.exports = dataFirst;
