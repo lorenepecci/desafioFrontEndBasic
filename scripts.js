@@ -6,7 +6,7 @@ const fetchAPI = async () => {
     const response = await fetch('https://us-central1-squid-apis.cloudfunctions.net/test-front-basic');
     const data = await response.json();
     return data;
-  } catch (error) {
+  } catch ( error ) {
     return error;
   }
 };
@@ -36,20 +36,23 @@ function itemClickListener (event, link) {
 
 function createProductItemElement({link, usuario, upvotes, comentarios, criadoEm, img}) {
   const section = document.createElement('section');
-  section.className = 'item';
+  section.className = 'sectionItem';
   section.appendChild(createCustomElement('span', 'item_link', link));
   section.appendChild(createCustomElement('span', 'item_usuario', usuario));
   section.appendChild( createCustomElement( 'span', 'item_upvotes', upvotes ) );
   section.appendChild( createCustomElement( 'span', 'item_comentarios', comentarios ) );
   section.appendChild( createCustomElement( 'span', 'item_criadoEm', criadoEm ) );
-  section.appendChild( createProductImageElement( img ) )
-  section.addEventListener('click', (event) => itemClickListener(event, link));
+  const sectionImage = document.createElement('section');
+  sectionImage.className = ' sectionImage';
+  sectionImage.appendChild( createProductImageElement( img ) )
+  sectionImage.addEventListener( 'click', ( event ) => itemClickListener( event, link ) );
+  section.appendChild(sectionImage)
   return section;
 }
 
 async function addImages() {
   const data = await fetchAPI();
-  console.log( data );
+  console.log( data[0] );
   avisoCarregando.remove();
   const sectionItem = document.querySelector('.body-images');
   for (let index = 0; index < data.length; index += 1) {
