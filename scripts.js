@@ -25,6 +25,15 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
+function openInNewTab( link ) {
+  var win = window.open(link, '_blank');
+  win.focus();
+}
+
+function itemClickListener (event, link) {
+  openInNewTab( link );
+}
+
 function createProductItemElement({link, usuario, upvotes, comentarios, criadoEm, img}) {
   const section = document.createElement('section');
   section.className = 'item';
@@ -33,7 +42,8 @@ function createProductItemElement({link, usuario, upvotes, comentarios, criadoEm
   section.appendChild( createCustomElement( 'span', 'item_upvotes', upvotes ) );
   section.appendChild( createCustomElement( 'span', 'item_comentarios', comentarios ) );
   section.appendChild( createCustomElement( 'span', 'item_criadoEm', criadoEm ) );
-  section.appendChild(createProductImageElement(img))
+  section.appendChild( createProductImageElement( img ) )
+  section.addEventListener('click', (event) => itemClickListener(event, link));
   return section;
 }
 
