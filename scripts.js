@@ -11,10 +11,12 @@ const fetchAPI = async () => {
   }
 };
 
-function createProductImageElement(imageSquid) {
+function createProductImageElement(imageSquid, name) {
   const img = document.createElement('img');
-  img.className = 'item_image';
+  img.className = name;
   img.src = imageSquid;
+ /*  img.height = '150px';
+  img.width = '150px';  */
   return img;
 }
 
@@ -34,32 +36,40 @@ function itemClickListener (event, link) {
   openInNewTab( link );
 }
 
-function createProductItemElement({link, usuario, upvotes, comentarios, criadoEm, img}) {
+
+function createProductItemElement ( { link, usuario, upvotes, comentarios, criadoEm, imgObj } ) {
   const section = document.createElement('section');
   section.className = 'sectionItem';
-  section.appendChild(createCustomElement('span', 'item_link', link));
-  section.appendChild(createCustomElement('span', 'item_usuario', usuario));
-  section.appendChild( createCustomElement( 'span', 'item_upvotes', upvotes ) );
-  section.appendChild( createCustomElement( 'span', 'item_comentarios', comentarios ) );
-  section.appendChild( createCustomElement( 'span', 'item_criadoEm', criadoEm ) );
-  const sectionImage = document.createElement('section');
-  sectionImage.className = ' sectionImage';
-  sectionImage.appendChild( createProductImageElement( img ) )
-  sectionImage.addEventListener( 'click', ( event ) => itemClickListener( event, link ) );
-  section.appendChild(sectionImage)
+  section.appendChild(createCustomElement('div', 'item_usuario', `@${usuario}`));
+  const votes = createCustomElement( 'div', 'item_upvotes', upvotes );
+  votes.appendChild( createProductImageElement('./assets/icon2.png' , 'icon'))
+  section.appendChild( votes);
+  const coment = createCustomElement( 'div', 'item_comentarios', comentarios );
+  coment.appendChild(createProductImageElement('./assets/icon1.png' , 'icon')  );
+  section.appendChild( coment );
+  const d = new Date(criadoEm)
+  const date = d.toLocaleTimeString( [], { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' } );
+  const criado = createCustomElement( 'div', 'item_criadoEm', date);
+  criado.appendChild( createProductImageElement( './assets/icon3.png', 'icon' ) );
+  section.appendChild( criado );
+  const divImage = document.createElement('div');
+  divImage.className = 'divImage';
+  divImage.appendChild( createProductImageElement( imgObj, 'item_image' ) );
+  divImage.addEventListener( 'click', ( event ) => itemClickListener( event, link ) );
+  section.appendChild( divImage );
   return section;
 }
 
 async function addImages() {
   const data = await fetchAPI();
-  console.log( data[0] );
+  console.log( data );
   avisoCarregando.remove();
-  const sectionItem = document.querySelector('.body-images');
+  const sectionBody = document.querySelector('.body-images');
   for (let index = 0; index < data.length; index += 1) {
     const { link, usuario, upvotes, comentarios, criadoEm,imagens } = data[ index ];
-    const img = imagens.thumbnail.url;
-    sectionItem.appendChild(
-      createProductItemElement({ link, usuario: usuario.username, upvotes, comentarios, criadoEm, img }),
+    const imgObj = imagens.thumbnail.url;
+    sectionBody.appendChild(
+      createProductItemElement({ link, usuario: usuario.username, upvotes, comentarios, criadoEm, imgObj}),
     );
   }
 }

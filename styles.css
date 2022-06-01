@@ -1,3 +1,39 @@
 body {
   background: #fff;
 }
+
+.item_image {
+  width: 150px;
+  height: 150px;
+}
+
+/* .container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.body-images {
+  display: flex;
+  flex-basis: 70%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.sectionItem {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin: 5px;
+  width: 200px;
+  border: 2px solid rgb(234, 234, 233);
+  border-radius: 5px;
+  box-sizing: border-box;
+} 
+
+ */
+.icon {
+  width: 1%;
+  float: left;
+}
